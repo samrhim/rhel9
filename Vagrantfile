@@ -7,7 +7,7 @@
 
 Vagrant.configure("2") do |config|
   
-  config.vm.box = "generic/rhel9"
+  config.vm.box = "ubuntu/trusty64"
   config.vm.box_check_update = false
   config.vbguest.auto_update = false
   config.vbguest.no_remote = true
@@ -15,16 +15,16 @@ Vagrant.configure("2") do |config|
   config.vm.network "private_network", ip: "192.168.56.200"
   config.vm.network "forwarded_port", guest: 22, host: 2222
 
-# Provision rhel9 server
+# Provision ubuntu server
     
-    config.vm.define "rhel9" do |rhel9|
+    config.vm.define "ubuntu" do |ubuntu|
       rhel9.vm.hostname = "server.lab.local"
       rhel9.vm.provision "shell", path: "server.sh"
       rhel9.vm.provider "virtualbox" do |vb|
 	vb.check_guest_additions = false
         vb.memory = "4096"
         vb.cpus = "2"
-        vb.name = "rhel9"
+        vb.name = "ubuntu"
       end
     end
 end
