@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
     
     config.vm.define "rhel9" do |rhel9|
       rhel9.vm.hostname = "server.lab.local"
-#     rhel9.vm.provision "shell", path: "server.sh"
+      rhel9.vm.provision "shell", path: "server.sh"
       rhel9.vm.provider "virtualbox" do |vb|
 	      vb.check_guest_additions = false
         vb.memory = "4096"
